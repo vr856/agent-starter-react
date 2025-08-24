@@ -4,7 +4,6 @@ from livekit import agents
 from livekit.agents import AgentSession, Agent, RoomInputOptions
 from livekit.plugins import (
     openai,
-    cartesia,
     deepgram,
     noise_cancellation,
     silero,
@@ -23,7 +22,7 @@ async def entrypoint(ctx: agents.JobContext):
     session = AgentSession(
         stt=deepgram.STT(model="nova-3", language="multi"),
         llm=openai.LLM(model="gpt-4o-mini"),
-        tts=cartesia.TTS(model="sonic-2", voice="f786b574-daa5-4673-aa0c-cbe3e8534c02"),
+        tts=deepgram.TTS(model="aura-2-arcas-en"),
         vad=silero.VAD.load(),
         turn_detection=MultilingualModel(),
     )
